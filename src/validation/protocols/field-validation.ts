@@ -1,6 +1,4 @@
 export interface FieldValidation {
-  fiel: string
+  field: string
   validate (value: string): Error
 }
-
-

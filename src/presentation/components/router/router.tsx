@@ -3,7 +3,11 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Login } from '@/presentation/pages/login'
 import '@/presentation/styles/global.scss'
 
-const Router: React.FC = () => {
+type Props = {
+  makeLogin: React.FC
+}
+
+const Router: React.FC<Props> = ({ makeLogin }: Props) => {
   return (
     <BrowserRouter>
       <Switch>

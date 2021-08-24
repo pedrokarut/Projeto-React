@@ -5,7 +5,6 @@ import faker from 'faker'
 
 const makeSut = (): MinLengthValidation => new MinLengthValidation(faker.database.column(), 5)
 
-
 describe('MinLengthValidation', () => {
   test('Should return error if value is invalid', () => {
     const sut = makeSut()

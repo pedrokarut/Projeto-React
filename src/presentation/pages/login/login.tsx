@@ -5,13 +5,15 @@ import Context from '@/presentation/context/form/form-context'
 import { Validation } from '@/presentation/protocols/validation'
 import { Authentication } from '@/domain/usecases'
 import { Link, useHistory } from 'react-router-dom'
+import { SaveAccessTokenMock } from '@/presentation/test'
 
 type Props = {
   validation: Validation
   authentication: Authentication
+  saveAccessTokenMock: SaveAccessTokenMock
 }
 
-const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
+const Login: React.FC<Props> = ({ validation, authentication, saveAccessTokenMock }: Props) => {
   const history = useHistory()
   const [state, setState] = useState({
     isLoading: false,
@@ -40,6 +42,7 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
         email: state.email,
         password: state.password
       })
+      await saveAccessToken.save(account.accessToken)
       localStorage.setItem('accessToken', account.accessToken)
       history.replace('/')
     } catch (error) {

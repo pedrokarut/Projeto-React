@@ -1,2 +1,1 @@
-export * from './moch-http-client'
-export * from './mock-http-post'
+export * from './mock-http'
